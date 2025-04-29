@@ -1,0 +1,264 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Logo */
+.navbar .logo a {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.navbar .navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* espace entre les liens */
+  flex-grow: 1; /* permet d’occuper l’espace restant */
+}
+/* Navigation liens */
+.navbar .navigation a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s;
+}
+
+
+/* Animation au survol */
+.navbar .navigation a:hover {
+  color: #f0c040;
+}
+
+.navbar .navigation a span {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #f0c040;
+  transition: width 0.3s;
+}
+
+.navbar .navigation a:hover span {
+  width: 100%;
+}
+
+/* Lien actif */
+.navbar .navigation .active {
+  color: #f0c040;
+}
+
+.navbar .navigation .active span {
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+html{
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+}
+
+section{
+  height: 100vh;
+  scroll-snap-align: start;
+  padding-top: 70px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  /* Fond initial : plus "dézoomer", plus blanc au centre */
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, #000 80%);
+  background-size: 200%; /* Grand au départ */
+  background-position: center;
+  transition: background-size 0.5s ease, background 0.5s ease;
+}
+
+
+section.zoomed {
+  /* Fond zoomé : plus foncé, plus resserré */
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 10%, #000 90%);
+  background-size: 120%;
+}
+
+section h2 a {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #333;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 24px;
+  min-width: 200px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+/* Effet au survol */
+section h2 a:hover {
+  background-color: #f5f2f2;
+  color: black;
+  box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.8);
+}
+
+/* Le cercle lumineux autour du bouton */
+section::after {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+section.active::after {
+  animation: breathing 2s infinite alternate;
+  opacity: 1;
+}
+
+section.zoomed::after {
+  transform: translate(-50%, -50%) scale(1.2);
+  opacity: 1;
+  animation: breathing 2s infinite ease-in-out;
+}
+
+@keyframes breathing {
+  0% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.footer {
+  height: 200px; /* juste 200px de haut */
+  background-color: #333; /* même couleur que navbar */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  scroll-snap-align: start; /* important pour snapper */
+  scroll-margin-top: 70px; /* corrige l'espace avec ta navbar */
+}
+
+.footer-content {
+  text-align: center;
+}
+
+.footer .social-links {
+  margin-top: 10px;
+  display: flex;
+  gap: 20px;
+}
+
+.footer .social-links a {
+  color: white;
+  font-size: 24px;
+  transition: color 0.3s;
+}
+
+.footer .social-links a:hover {
+  color: #f0c040; /* couleur au hover */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
+}
+
+.info-section {
+  width: 90%;
+  max-width: 1000px;
+  margin: 100px auto 50px auto; /* Ajout de marge plus grande en haut */
+}
+
+.info-block {
+  display: flex;
+  align-items: center;
+  margin: 40px 0;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 20px;
+  transition: transform 0.3s;
+}
+
+.info-block:hover {
+  transform: scale(1.02);
+}
+
+.info-block img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.info-content {
+  margin-left: 20px;
+}
+
+.info-block.left {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.info-block.left .info-content {
+  margin-left: 0;
+  margin-right: 20px;
+}
+
+.TitreEp{
+  padding-top: 75px;
+  display: flex;
+  justify-content: center;
+}

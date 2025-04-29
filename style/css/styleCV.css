@@ -1,0 +1,49 @@
+html, body {
+    scroll-snap-type: none;
+  scroll-behavior: auto; /* tu peux garder smooth pour un scroll agréable */
+}
+
+    /* Style pour la page CV */
+.ImgCV {
+    margin-top: 120px; /* espace sous ta navbar */
+    text-align: center;
+    padding: 20px;
+}
+
+.ImgCV h3 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #222;
+}
+
+.ImgCV img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+    /* Animation quand tu survoles ton image */
+.ImgCV img:hover {
+    transform: scale(1.03);
+}
+
+.download-link {
+    display: inline-block;
+    margin-top: 30px;
+    font-size: 20px;
+    background-color: #f0c040;
+    color: #333;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.download-link:hover {
+    background-color: #333;
+    color: white;
+}
