@@ -1,67 +1,286 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <title>Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mathieu Redois, étudiant en BUT Informatique à Nantes</title>
+  <meta name="description" content="Portfolio de Mathieu Redois, étudiant en 3e année de BUT Informatique à l'IUT de Nantes : projets, parcours, compétences et contact.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Mathieu Redois, étudiant en BUT Informatique">
+  <meta property="og:description" content="Projets, parcours et compétences d'un étudiant en 3e année de BUT Informatique à Nantes.">
+  <meta property="og:url" content="https://portfolio.jakkoos.fr/">
+  <link rel="canonical" href="https://portfolio.jakkoos.fr/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    /* Applique le thème choisi avant le premier affichage, pour éviter un flash. */
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      try {
+        var theme = localStorage.getItem('theme');
+        if (theme === 'dark' || theme === 'light') root.dataset.theme = theme;
+      } catch (e) { /* stockage indisponible : on suit le réglage du système */ }
+    })();
+  </script>
 </head>
 <body>
-    <header class="navbar">
-        <h2 class="logo"><a href="index.html" style="text-decoration: none;">Mathieu Redois</a></h2>
-        
-        <nav class="navigation">
-            <a href="index.html">Accueil<span></span></a><!--la classe active permet la mise en surbrillance dans le css-->
-            <!--span est l'équivalent d'un div mais à l'intérieur d'un élément, ici on ne rentre rien car tous se passera dans le css: il servira pour créér un fond qui s'activera au passage de la souris-->
-            <a href="CV.html">Mon CV<span></span></a>
-            <a href="LM.html">Lettre de motivation<span></span></a>
-            <a href="projet.html">Mes Projet scolaires et perso<span></span></a>
-            <a href="mesEP.html">Mes expériences professionnelles<span></span></a>
-        </nav>
-    </header>
-    <div>
-      <section class="CV">
-        <h2>
-          <a href="CV.html">Mon CV</a>
-        </h2>
-      </section>
-      <section>
-        <h2>
-          <a href="LM.html">Lettre de motivation</a>
-        </h2>
-      </section>
-      <section>
-        <h2>
-          <a href="projet.html">Mes Projet scolaires et perso</a>
-        </h2>
-      </section>
-      <section>
-        <h2>
-          <a href="mesEP.html">Mes expériences professionnelles</a>
-        </h2>
-      </section>
-    </div>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
 
+  <header class="site-header">
+    <a class="site-name" href="#top">Mathieu Redois</a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="#projets">Projets</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#competences">Compétences</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" type="button" id="theme-toggle" aria-pressed="false">Mode sombre</button>
+  </header>
 
-    <footer class="footer">
-      <div class="footer-content">
-        <p>© 2025 Mathieu Redois</p>
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/mathieu-redois-139a17275/" target="_blank" aria-label="LinkedIn">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="https://github.com/" target="_blank" aria-label="GitHub">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="mailto:mathieuredois@gmail.com" aria-label="Email">
-            <i class="fas fa-envelope"></i>
-          </a>
+  <main id="contenu">
+
+    <!-- Accueil -->
+    <section class="hero" id="top">
+      <div class="hero-text">
+        <h1>Mathieu <span>Redois</span></h1>
+        <p class="lede">Étudiant en 3<sup>e</sup> année de BUT Informatique à l'IUT de Nantes. Je construis des outils dont je me sers vraiment&nbsp;: une appli de révision, un jeu coopératif, quelques montages électroniques.</p>
+        <p class="hero-actions">
+          <a class="button button-primary" href="#projets">Voir mes projets</a>
+          <a class="button" href="assets/pdf/cv-mathieu-redois.pdf" download>Télécharger mon CV (PDF)</a>
+        </p>
+      </div>
+
+      <!-- Le paquet de fiches : une question, on retourne, la réponse.
+           Sans JavaScript, les fiches s'affichent simplement les unes sous les autres. -->
+      <div class="deck" id="deck" aria-label="Me connaître en quatre fiches de révision">
+        <p class="deck-count" id="deck-count" aria-live="polite">Fiche 1 sur 4</p>
+        <ol class="deck-cards" id="deck-cards">
+          <li class="fiche">
+            <div class="fiche-inner">
+              <div class="fiche-face fiche-front">
+                <p class="fiche-side">Question</p>
+                <h2 class="fiche-question">Qui est Mathieu Redois&nbsp;?</h2>
+              </div>
+              <div class="fiche-face fiche-back">
+                <p class="fiche-side">Réponse</p>
+                <p>Un étudiant en <mark>3<sup>e</sup> année de BUT Informatique</mark> à l'IUT de Nantes, bachelier STI2D, qui apprend surtout en construisant.</p>
+              </div>
+            </div>
+          </li>
+          <li class="fiche">
+            <div class="fiche-inner">
+              <div class="fiche-face fiche-front">
+                <p class="fiche-side">Question</p>
+                <h2 class="fiche-question">Qu'a-t-il construit récemment&nbsp;?</h2>
+              </div>
+              <div class="fiche-face fiche-back">
+                <p class="fiche-side">Réponse</p>
+                <p><mark>StudyCards</mark>, une appli de révision par cartes mémoire à partir des cours en PDF, et <mark>Last Ember</mark>, un jeu coopératif sur Roblox.</p>
+              </div>
+            </div>
+          </li>
+          <li class="fiche">
+            <div class="fiche-inner">
+              <div class="fiche-face fiche-front">
+                <p class="fiche-side">Question</p>
+                <h2 class="fiche-question">Avec quoi travaille-t-il&nbsp;?</h2>
+              </div>
+              <div class="fiche-face fiche-back">
+                <p class="fiche-side">Réponse</p>
+                <p><mark>Java et Kotlin</mark> à l'IUT, <mark>Python, Go et SQL</mark>, et le web pour les projets perso&nbsp;: HTML, CSS, JavaScript, PHP.</p>
+              </div>
+            </div>
+          </li>
+          <li class="fiche">
+            <div class="fiche-inner">
+              <div class="fiche-face fiche-front">
+                <p class="fiche-side">Question</p>
+                <h2 class="fiche-question">Comment le contacter&nbsp;?</h2>
+              </div>
+              <div class="fiche-face fiche-back">
+                <p class="fiche-side">Réponse</p>
+                <p>Par mail, à <a href="mailto:mathieuredois@gmail.com">mathieuredois@gmail.com</a>, ou sur <a href="https://www.linkedin.com/in/mathieu-redois-139a17275/" rel="noopener">LinkedIn</a>.</p>
+              </div>
+            </div>
+          </li>
+        </ol>
+        <p class="deck-actions">
+          <button class="button button-primary" type="button" id="deck-flip">Retourner la fiche</button>
+          <button class="button" type="button" id="deck-next">Fiche suivante</button>
+        </p>
+      </div>
+    </section>
+
+    <!-- Projets -->
+    <section class="section" id="projets">
+      <h2 class="section-title">Projets</h2>
+
+      <article class="project">
+        <header class="project-head">
+          <h3>StudyCards</h3>
+          <p class="project-kind">Application web, projet personnel</p>
+          <p class="status status-live">En service</p>
+        </header>
+        <div class="project-body">
+          <p>Une appli de révision par cartes mémoire, adossée aux cours en PDF. Répétition espacée, dossiers et étiquettes, réponses tapées puis vérifiées, découpe d'images directement dans le PDF, statistiques, exports PDF, HTML, CSV et Anki.</p>
+          <p>Elle tenait d'abord dans un seul fichier HTML, sans serveur ni compte. Elle synchronise maintenant mes cartes entre mes appareils grâce à une petite API en PHP, hébergée sur mon propre nom de domaine.</p>
+          <p class="project-stack">JavaScript, HTML, CSS, PHP, tests de bout en bout</p>
+          <p class="project-link"><a href="https://studycards.jakkoos.fr/" rel="noopener">studycards.jakkoos.fr</a> (accès sur compte)</p>
+        </div>
+      </article>
+
+      <article class="project">
+        <header class="project-head">
+          <h3>Last Ember</h3>
+          <p class="project-kind">Jeu Roblox, projet personnel à deux</p>
+          <p class="status status-wip">En développement</p>
+        </header>
+        <div class="project-body">
+          <p>Un jeu coopératif pour un à quatre joueurs&nbsp;: explorer une forêt de nuit, vague après vague, avant que le feu de camp ne s'éteigne, puis améliorer le camp entre deux sorties. Une ambiance inquiétante, jamais gore, pensée pour des parties de quinze à vingt minutes entre amis.</p>
+          <p>Nous le développons à deux, avec un dépôt Git partagé et une feuille de route jusqu'à l'ouverture au public.</p>
+          <p class="project-stack">Roblox Studio, Luau, Git</p>
+        </div>
+      </article>
+
+      <article class="project">
+        <header class="project-head">
+          <h3>Suivi de traitement, SAÉ médicale</h3>
+          <p class="project-kind">Application mobile, projet universitaire</p>
+          <p class="status status-wip">En cours</p>
+        </header>
+        <div class="project-body">
+          <p>Conception d'une application mobile qui aide les patients à suivre leur traitement de la sclérose en plaques. C'est la situation d'apprentissage et d'évaluation (SAÉ) de ma troisième année de BUT.</p>
+          <p class="project-stack">Conception d'application mobile, travail en mode projet</p>
+        </div>
+      </article>
+
+      <article class="project">
+        <header class="project-head">
+          <h3>Ce que j'explore à côté</h3>
+          <p class="project-kind">Électronique et systèmes</p>
+        </header>
+        <div class="project-body">
+          <p>Un ESP32-S3 avec son kit de capteurs et sa caméra, pris en main avec l'IDE Arduino puis en MicroPython. Et Linux sur ARM&nbsp;: le passage de mon portable Snapdragon X sous Ubuntu, avec un environnement de développement en conteneurs.</p>
+          <p class="project-stack">ESP32, MicroPython, Ubuntu, conteneurs</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Parcours -->
+    <section class="section" id="parcours">
+      <h2 class="section-title">Parcours</h2>
+
+      <div class="timelines">
+        <div>
+          <h3 class="timeline-title">Expériences</h3>
+          <ol class="timeline">
+            <li>
+              <p class="timeline-date">2026</p>
+              <h4>Stage en support informatique</h4>
+              <p class="timeline-place">EL2D, Carquefou</p>
+              <p>Préparation des postes pour les arrivées et les départs (ordinateurs, téléphones), écriture et modification de scripts, prise en charge des incidents des salariés par téléphone et par mail.</p>
+            </li>
+            <li>
+              <p class="timeline-date">Été 2024</p>
+              <h4>Travail saisonnier en élevage porcin</h4>
+              <p class="timeline-place">EARL Les Granges du Manoir</p>
+              <p>Deux mois à la maternité&nbsp;: alimentation et suivi des truies et des porcelets, conduite d'équipements agricoles.</p>
+            </li>
+            <li>
+              <p class="timeline-date">Été 2023</p>
+              <h4>Employé saisonnier</h4>
+              <p class="timeline-place">Super U, Saint-Jean-de-Monts</p>
+              <p>Mise en rayon des fruits et légumes, gestion des balances, aide aux clients.</p>
+            </li>
+            <li>
+              <p class="timeline-date">Février 2023</p>
+              <h4>Stage en cabinet d'architecture</h4>
+              <p class="timeline-place">ArchiDesigner Associés</p>
+              <p>Réalisation de maquettes 3D sur SketchUp.</p>
+            </li>
+            <li>
+              <p class="timeline-date">Juin 2022</p>
+              <h4>Stage d'immersion de deux semaines</h4>
+              <p class="timeline-place">SNCF Connect &amp; Tech, Nantes</p>
+              <p>Suivi du quotidien d'un développeur et d'un product owner, développement d'une page web, interviews pour découvrir les métiers de l'informatique.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div>
+          <h3 class="timeline-title">Formation</h3>
+          <ol class="timeline">
+            <li>
+              <p class="timeline-date">2024 à 2027</p>
+              <h4>BUT Informatique</h4>
+              <p class="timeline-place">IUT de Nantes</p>
+              <p>Troisième année en cours.</p>
+            </li>
+            <li>
+              <p class="timeline-date">2024</p>
+              <h4>Baccalauréat STI2D, spécialité SIN</h4>
+              <p class="timeline-place">Lycée Saint-Félix-La Salle, Nantes</p>
+              <p>Mention assez bien.</p>
+            </li>
+            <li>
+              <p class="timeline-date">2021</p>
+              <h4>Diplôme national du brevet</h4>
+              <p class="timeline-place">Collège Sainte-Anne, Carquefou</p>
+              <p>Mention bien.</p>
+            </li>
+          </ol>
+          <p class="timeline-next">Et après&nbsp;? Une école d'ingénieurs ou l'entrée dans le monde professionnel.</p>
         </div>
       </div>
-    </footer>
+    </section>
 
+    <!-- Compétences -->
+    <section class="section" id="competences">
+      <h2 class="section-title">Compétences</h2>
+      <dl class="skills">
+        <div>
+          <dt>Langages</dt>
+          <dd>Java, Kotlin, Python, Go, SQL</dd>
+        </div>
+        <div>
+          <dt>Web</dt>
+          <dd>HTML, CSS, JavaScript, PHP</dd>
+        </div>
+        <div>
+          <dt>Outils et systèmes</dt>
+          <dd>Git et GitHub, Linux, tests avec JUnit, Roblox Studio, SketchUp</dd>
+        </div>
+        <div>
+          <dt>Langues</dt>
+          <dd>Français, anglais</dd>
+        </div>
+      </dl>
 
-    <script src="script/script.js"></script>
+      <h3 class="aside-title">À côté des études</h3>
+      <p class="aside-text">Le sport d'abord&nbsp;: football et tennis de table en club pendant des années, musculation en salle aujourd'hui. Les jeux vidéo ensuite, surtout les jeux de tir en équipe&nbsp;: sur Valorant, j'ai atteint le rang Immortel, le deuxième plus haut du jeu. Et les voyages&nbsp;: Italie, Portugal, Irlande, Suisse.</p>
+    </section>
+
+    <!-- Contact -->
+    <section class="section section-contact" id="contact">
+      <h2 class="section-title">Contact</h2>
+      <p class="contact-mail"><a href="mailto:mathieuredois@gmail.com">mathieuredois@gmail.com</a></p>
+      <ul class="contact-links">
+        <li><a href="https://www.linkedin.com/in/mathieu-redois-139a17275/" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/MathieuRedois" rel="noopener">GitHub</a></li>
+        <li><a href="assets/pdf/cv-mathieu-redois.pdf" download>CV en PDF</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Mathieu Redois. Site écrit à la main en HTML, CSS et JavaScript, <a href="https://github.com/MathieuRedois/Portfolio" rel="noopener">code source sur GitHub</a>.</p>
+  </footer>
+
+  <script src="assets/js/script.js" defer></script>
 </body>
 </html>
